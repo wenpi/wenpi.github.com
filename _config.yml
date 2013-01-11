@@ -1,20 +1,20 @@
-#meta:
- #   site_title: "雁起平沙的文艺博客"
-  #  site_subtitle: "人生就是不停的战斗"
-   # site_language: "zh-cn"
-   # absolute_baseurl: http://art.yanping.me
-   # domain: yanping.me
-   # author:
-    #    full_name:Chen Yanping
-     #   short_name: ypchen
-      #  name: ypchen
-       # email: chen@yanping.me
+meta:
+    site_title: "文痞"
+    site_subtitle: "人不是向外奔走才是旅行，静静坐着思维也是旅行，凡是探索、追寻、触及那些不可知的情境，不论是风土的，心灵的，还是科技的，都是一种旅行"
+    site_language: "zh-cn"
+  #  absolute_baseurl: http://art.yanping.me
+  #  domain: yanping.me
+    author:
+        full_name:文痞
+        short_name: 文痞
+        name: 文痞
+        email: huwenshu@gmail.com
 
 #url: http://art.yanping.me
 
 #baseurl: /base
 
-markdown: rdiscount
+markdown: kramdown
 
 # markdown: maruku
 # maruku:
@@ -25,12 +25,12 @@ markdown: rdiscount
 #    png_url    : /images/latex/
 
 pygments: false
-#permalink: /blog/:year/:month/:day/:title
+permalink: /blog/:year/:month/:day/:title
 
-#disqus_short_name: ypchenstory
+disqus_short_name: ypchenstory
 
       
-#css:
-#    - /css/screen.css
+css:
+    - /css/screen.css
 
 
