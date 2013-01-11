@@ -14,7 +14,7 @@
 
 #baseurl: /base
 
-markdown: kramdown
+markdown: rdiscount
 
 # markdown: maruku
 # maruku:
