@@ -1,16 +1,16 @@
-meta:
-    site_title: "雁起平沙的文艺博客"
-    site_subtitle: "人生就是不停的战斗"
-    site_language: "zh-cn"
-    absolute_baseurl: http://art.yanping.me
-    domain: yanping.me
-    author:
-        full_name:Chen Yanping
-        short_name: ypchen
-        name: ypchen
-        email: chen@yanping.me
+#meta:
+ #   site_title: "雁起平沙的文艺博客"
+  #  site_subtitle: "人生就是不停的战斗"
+   # site_language: "zh-cn"
+   # absolute_baseurl: http://art.yanping.me
+   # domain: yanping.me
+   # author:
+    #    full_name:Chen Yanping
+     #   short_name: ypchen
+      #  name: ypchen
+       # email: chen@yanping.me
 
-url: http://art.yanping.me
+#url: http://art.yanping.me
 
 #baseurl: /base
 
@@ -25,12 +25,12 @@ markdown: kramdown
 #    png_url    : /images/latex/
 
 pygments: false
-permalink: /blog/:year/:month/:day/:title
+#permalink: /blog/:year/:month/:day/:title
 
-disqus_short_name: ypchenstory
+#disqus_short_name: ypchenstory
 
       
-css:
-    - /css/screen.css
+#css:
+#    - /css/screen.css
 
 
