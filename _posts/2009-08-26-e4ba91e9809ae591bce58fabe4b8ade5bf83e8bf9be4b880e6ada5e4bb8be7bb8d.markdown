@@ -1,0 +1,19 @@
+---
+comments: true
+date: 2009-08-26 12:49:00
+layout: post
+slug: '%e4%ba%91%e9%80%9a%e5%91%bc%e5%8f%ab%e4%b8%ad%e5%bf%83%e8%bf%9b%e4%b8%80%e6%ad%a5%e4%bb%8b%e7%bb%8d'
+title: 云通呼叫中心进一步介绍
+wordpress_id: 1551853
+categories:
+- 未分类
+---
+
+没想到昨天写的一篇简单的纯IP[400电话呼叫中心](http://www.51vcc.com)的介绍,竟然上了[donews首页](http://blog.donews.com).因为上了donews首页的原因,让这篇文章在[百度新闻](http://news.baidu.com/ns?word=400%B5%E7%BB%B0&tn=newstitle&from=news&ie=gb2312&bs=400%B5%E7%BB%B0&sr=0&cl=2&rn=20&ct=0&prevct=1)及[google新闻](http://news.google.cn/news/search?um=1&ned=ccn&hl=zh-CN&q=400%E7%94%B5%E8%AF%9D)针对400电话这个关键字都排在了前面   
+  
+既然朋友们对这个呼叫中心有着革命意义产品很有兴趣,就再开一篇,再详细对[云通呼叫中心](http://www.51vcc.com)做一个更加详细一点介绍。  
+  
+云通呼叫中心的核心技术革命是整套系统基于IP公网上来建设，通过IP交换技术来实现各企业虚拟总机及呼叫中心的联接。再通过IP转信令的网关设备实现与传统运营商的信令通信网对接，实现手机，固定电话与云通呼叫中心的上下行语音通话，如果能网关设备对接上运营商的短信网，也一样可以实现云通呼叫中心与手机的短信上下行。它的整体核心体系就是云通的云通信核心交换与计算系统，他通过CPU资源来替代原来通信网上的信令交换设备与语音板块。下面是简单拓扑图:  
+![云通呼叫中心](http://blog.donews.com/images/blog_donews_com/itluck/云通拓扑图.jpg)  
+  
+这样对于[UU商旅](http://trip.uucall.com)这个案例来说，UU商旅这个用户完全可以不管云通软交换系统是怎么交换与语音处理的。UU商旅只要把4006729400他原来已有的号码呼叫转换到云通呼叫中心分配的中继号码057128081300上，这样4006729400所有的呼叫将通过云通软交换系统分配到UU商旅配置的IVR导航上来。用户再跟据导航选择转到不同的座席上，由分布在不同城市的座席来完成本城市的商旅服务。

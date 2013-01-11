@@ -1,0 +1,30 @@
+---
+comments: true
+date: 2006-04-17 09:51:00
+layout: post
+slug: '%e7%bb%8f%e5%b8%b8%e9%98%85%e8%af%bb%e7%9a%84%e5%aa%92%e4%bd%93'
+title: 经常阅读的媒体
+wordpress_id: 832024
+categories:
+- 未分类
+---
+
+看到一博友旁边的媒体链接,跟我平常所读极其相似,现在偷个懒,一复制粘贴过来做个保存  
+
+
+  * [21世纪经济报道](http://www.nanfangdaily.com.cn/jj)
+  * [IT时代周刊](http://www.xindianzi.com/)
+  * [IT经理世界](http://www.ceocio.com.cn/)
+  * [中国网友报](http://wy.cnii.com.cn/)
+  * [互联网实验室](http://www.chinalabs.com/)
+  * [全球财经观察](http://www.gfo.cn/)
+  * [南方周末](http://www.nanfangdaily.com.cn/zm/)
+  * [天极评论](http://column.chinabyte.com/)
+  * [搜狐IT评论](http://it.sohu.com/7/0404/18/column219981846.shtml)
+  * [数字商业时代](http://www.digitimes.com.cn/pages/index.php)
+  * [斗牛士社区](http://www.donews.com/)
+  * [新经济导刊](http://www.daokan.com/)
+  * [新财经网](http://www.xincaijing.com/)
+  * [紫金博客网](http://www.zijin.net/index.shtml)
+  * [经济观察报](http://www.chinalabs.com/)
+  * [通信世界评论](http://www.cww.net.cn/TodayCritique/)

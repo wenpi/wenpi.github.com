@@ -1,0 +1,1236 @@
+---
+comments: true
+date: 2007-01-04 15:39:00
+layout: post
+slug: peercast%e5%88%86%e6%9e%90%e6%8a%a5%e5%91%8a
+title: Peercast分析报告
+wordpress_id: 1108088
+categories:
+- 未分类
+---
+
+Peercast分析报告
+
+
+
+
+1. 程序基本结构
+
+
+
+
+1.1 Simpel工程分析
+
+
+
+
+1.1.1 Simple工程的主要功能函数模块
+
+
+
+
+1.1.2 WinMain函数分析
+
+
+
+
+1.1.3 WndProc函数分析
+
+
+
+
+1.1.4 ChanInfoProc函数分析
+
+
+
+
+2. Corelib内部分析
+
+
+
+
+3．主程序说明
+
+
+
+
+
+
+
+/------------------------------------------------------------------------
+
+
+
+
+函数名
+
+
+
+
+类或者结构体
+
+
+
+
+注释
+
+
+
+
+变量或者对象
+
+
+
+
+关键字
+
+
+
+
+//---------------------------代表程序段开始处
+
+
+
+
+//***************************代表程序段结束处
+
+
+
+
+1.程序基本结构
+
+
+
+
+
+
+
+本报告分析方法是从PeerCast的主程序开始，然后跟进到LIB函数说明其功能。PeerCast是一个支持多平台SDK开发包，因此源码里可以看到Win32和Unix两种版本。
+
+
+
+
+整个WorkSpace（工作区）包含3个Projects(工程)，包括corelib、Simple、winamp2。
+
+
+
+
+
+
+
+u PeerCast的主要功能都由Corelib实现，它通过peercast.h导出两个类PeercastInstance和PeercastApplication
+
+
+
+
+u winamp2是程序响应后调用的播放插件
+
+
+
+
+u Simple工程是程序的主体实现，通过继承peercast.h导出的两个类实现程序功能
+
+
+
+
+
+
+
+1.1 Simple工程分析
+
+
+
+
+
+
+
+1.1.1 Simple工程的主要功能函数模块：
+
+
+
+
+
+
+
+//注册程序窗体
+
+
+
+
+ATOMMyRegisterClass(HINSTANCE hInstance); 
+
+
+
+
+//初始化程序窗体
+
+
+
+
+BOOL InitInstance(HINSTANCE, int);
+
+
+
+
+//负责传递消息到程序窗口
+
+
+
+
+LRESULT CALLBACK  WndProc(HWND, UINT, WPARAM, LPARAM);
+
+
+
+
+//负责传递信息到接收频道后的频道信息窗口
+
+
+
+
+LRESULT CALLBACK ChanInfoProc(HWND, UINT, WPARAM, LPARAM);
+
+
+
+
+//显示任务栏图标
+
+
+
+
+void setTrayIcon(int type, const char *,const char *,bool);
+
+
+
+
+//显示频道信息窗口信息
+
+
+
+
+void flipNotifyPopup(int id, ServMgr::NOTIFY_TYPE nt);
+
+
+
+
+
+
+
+1.1.2 WinMain函数分析
+
+
+
+
+
+
+
+程序的入口函数是 int  APIENTRY  WinMain(HINSTANCE hInstance,
+
+
+
+
+HINSTANCE  hPrevInstance,
+
+
+
+
+LPSTR lpCmdLine,
+
+
+
+
+int nCmdShow)
+
+
+
+
+其中第一个参数是程序实例句柄，第二个参数以被废弃，第四个参数是
+
+
+
+
+InitInstance函数中用到的参数。第三个参数很重要，它是网页与程序交互的桥梁。
+
+
+
+
+
+
+
+WinMain函数中lpCmdLine有五种可能值：-inifile、-zen、-multi、-kill、-url。
+
+
+
+
+我们重点分析其值为-url的情况，当用户点击网页播放链接时，程序通过以下代码去掉了连接的协议头peercast://pls，得到了标准的media player播放文件名chanURL：
+
+
+
+
+//-------------------------------------------------------
+
+
+
+
+if (strnicmp(tmpURL,"peercast://",11)==0)
+
+
+
+
+{
+
+
+
+
+if (strnicmp(tmpURL+11,"pls/",4)==0)
+
+
+
+
+chanURL = tmpURL+11+4;
+
+
+
+
+else
+
+
+
+
+chanURL = tmpURL+11;
+
+
+
+
+showGUI = false;
+
+
+
+
+}
+
+
+
+
+//***************************************
+
+
+
+
+
+
+
+WinMain初始化了corelib的两个导出类的继承类对象：
+
+
+
+
+//----------------------------------------------------------
+
+
+
+
+peercastInst = new MyPeercastInst();
+
+
+
+
+peercastApp = new MyPeercastApp();
+
+
+
+
+//***************************************
+
+
+
+
+
+
+
+下面的函数生成了新的ServMgr类和ChanMgr类对象，根据默认设置生成INI文件，生成了INI中的 SessionID和BroadcastID.。主要功能在ServMgr类的loadSettings函数实现。
+
+
+
+
+//----------------------------------------------------------
+
+
+
+
+peercastInst->Init();
+
+
+
+
+//***************************************
+
+
+
+
+
+
+
+下面的函数判断chanURL是否存在，也就是判断用户是否有点击链接
+
+
+
+
+//----------------------------------------------------------
+
+
+
+
+if (chanURL)
+
+
+
+
+{
+
+
+
+
+ChanInfo info;
+
+
+
+
+servMgr->procConnectArgs(chanURL,info);
+
+
+
+
+chanMgr->findAndPlayChannel(info,false);
+
+
+
+
+}
+
+
+
+
+//***************************************
+
+
+
+
+
+
+
+procConnectArgs函数的功能是：
+
+
+
+
+l sip - add network connection to client with channel
+
+
+
+
+l pip - add private network connection to client with channel
+
+
+
+
+l ip - add hit
+
+
+
+
+l tip - add tracker hit
+
+
+
+
+findAndPlayChannel函数的功能是通过ChanInfo播放频道文件，主要功能在Channel类里的findAndPlayChannelProc函数实现。
+
+
+
+
+
+
+
+//----------------------------------------------------------
+
+
+
+
+peercastInst->saveSettings();
+
+
+
+
+peercastInst->quit();
+
+
+
+
+//***************************************
+
+
+
+
+saveSettings函数设置并保存INI文件，主要功能在ServMgr类的saveSettings函数实现。
+
+
+
+
+
+
+
+1.1.3 WndProc函数分析
+
+
+
+
+//-----------------------------------------------------------
+
+
+
+
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+
+
+
+
+WndProc主要是响应自定义消息和系统消息。
+
+
+
+
+Message的可能值:
+
+
+
+
+WM_SHOWGUI： UI界面初始化
+
+
+
+
+WM_TRAYICON： 发送左、右键点击下标消息
+
+
+
+
+WM_COPYDATA： Muti情况下播放
+
+
+
+
+WM_GETPORTNUMBER： 得到端口号
+
+
+
+
+WM_SHOWMENU： 检查PC新版本，响应左键、右键弹出菜单，判断是否有最近频道，有则加入到列表
+
+
+
+
+WM_CREATE： 同WM_CREATE
+
+
+
+
+WM_COMMAND： 主要判断wParam底四字节情况,响应弹出菜单消息和插入菜单的自定义消息(点击连接后增加菜单)
+
+
+
+
+WM_DESTROY： 系统退出
+
+
+
+
+
+
+
+1.1.4 ChanInfoProc函数分析
+
+
+
+
+
+
+
+ChanInfoProc函数主要在响应WM_COMMAND的四个自定义消息中的INFO_CMD消息，由DialogBox函数调用。
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. corelib内部分析
+
+
+
+
+
+
+
+2.1 corlib内部各类功能调试心得
+
+
+
+
+
+
+
+mms.cpp、 mp3.cpp、 nsv.cpp ogg.cpp都是读指定文件格式的读包协议，
+
+
+
+
+jis.cpp是日文编码。
+
+
+
+
+
+
+
+所有客户端必须向server交互自己的消息(通过xml),靠服务端来获得其它客
+
+
+
+
+户的地址后在通过servhs类向其它客户握手，通过gnutella里的gnupacket
+
+
+
+
+通信。
+
+
+
+
+
+
+
+settings.html页,save按钮响应ServMgr::saveSettings函数。利用
+
+
+
+
+inifile.cpp里的inifile类重写ini文件。inifile类封装了stream.cpp里的stream类,stream类主要通过CFile的fopen()和fread、fwrite、fseek打开、读写ini文件 。本质就是通过CFile类读写文件。
+
+
+
+
+
+
+
+brocast.html页，Create Relay按钮响应url.cpp中的stream函数，这个函数调用streamURL函数提交播放地址，并把地址按照一定规则转换，得到ID。
+
+
+
+
+
+
+
+Peercast右键菜单的advanced里通过showHTML函数打开explorer，具体过程为: showHTML----a sys->callLocalURL ----a ShellExecute(mainWindow, NULL, cmd, NULL, NULL, SW_SHOWNORMAL);
+
+
+
+
+
+
+
+当点击YP上的连接后，响应channel.cpp里的ChanHitList类的构造函数，接着响应Channnel类的构造函数。PC会在左键菜单加入频道，频道包含play和info选项，点击play按钮，PC响应
+
+
+
+
+sys->executeFile(fname)---a ShellExecute(NULL,"open",fname,NULL,NULL,SW_SHOWNORMAL)
+
+
+
+
+这时的fname为play.pls。
+
+
+
+
+
+
+
+如果直接在网页里输入网址，会响应程序的wm_copydata消息，channel.cpp
+
+
+
+
+中函数响应过程:
+
+
+
+
+findandPlayChannel--afindAndPlayChannelProc--afindChannelByNameID--afindAndRelay--afindChannelByNameID---aCreateChannel--afindChannelByNameID---awhile(ch)这时候有值了---areturn ch；得到channel了。
+
+
+
+
+
+
+
+
+
+
+servMgr::start是程序运行时候就自动启动的
+
+
+
+
+在corelib里的构造函数加断点
+
+
+
+
+响应顺序是:
+
+
+
+
+Sys::Sys() 
+
+
+
+
+servMgr::servMgr()
+
+
+
+
+ChanMgr::ChanMgr()
+
+
+
+
+ServMgr::Start()
+
+
+
+
+GnuIDList::GunIDList(int max)
+
+
+
+
+然后点击pc的brocast.html链接按钮，响应handshakeHTTP 
+
+
+
+
+接下来是HTML::HTML 
+
+
+
+
+进入yp页面点击连接后响应
+
+
+
+
+ChanHitList::ChanHitList() 
+
+
+
+
+然后是Channel::Channel()
+
+
+
+
+
+
+
+servent类执行顺序:
+
+
+
+
+Servent::serverProc
+
+
+
+
+Servent::initIncoming
+
+
+
+
+Servent::incomingProc
+
+
+
+
+Servent::givProc
+
+
+
+
+Servent::handshakeIncoming()
+
+
+
+
+Servent::handshakeHTTP
+
+
+
+
+PCPStream::procAtom 
+
+
+
+
+Corlib里的类
+
+
+
+
+
+
+
+Xml类里嵌套了Node类。
+
+
+
+
+Url里是URLSource类。
+
+
+
+
+Sys里String类，Radom类，Sys类，WEvent类，Wlock类，Threadinfo类，LogBuffer类
+
+
+
+
+Stream里Stream类，FileStream类，MemoryStream类，IndirectStream类
+
+
+
+
+Stats里Stats类
+
+
+
+
+ServMgr里BCID类，ServHost类，ServFilter类，ServMgr类
+
+
+
+
+Servent里Servent类
+
+
+
+
+Http里HTTPException类，Cookie类，CookieList类HTTP类
+
+
+
+
+Html里Html类
+
+
+
+
+Gnutella里GnuPacket类里嵌套了Hash类，GnuPacketBuffer类，GnuStream类
+
+
+
+
+cstream里ChanPacket类，ChanPacketBuffer类ChannelStream类
+
+
+
+
+Common里各种EXCEPTION，GnuID类，GnuIDList类，
+
+
+
+
+Channel里TrackInfo类，ChanInfo类，ChanHit类，ChanHitList类，ChanHitSearch类
+
+
+
+
+ChanMeta类，RawStream类，PeercastStream类，ChannelSource类，PeercastSource类
+
+
+
+
+Channel类，ChanMgr类PlayList类
+
+
+
+
+Atom里AtomSteam类
+
+
+
+
+
+
+
+==================接口=========================
+
+
+
+
+peercast.h 中定义了PeercastInstance是外部应用给corelib的接口,peercast.h中只有定义有部分实现,外部调用者可以实现该接口,通过对在 peercast.cpp中定义的全局变量PeercastInstance* peercastInst重新赋值,来实现这一点.
+
+
+
+
+
+
+
+peercast.h 中定义的PeercastApplication *peercastApp是core给应用程序的接口,其中包括增加和减少频道,启动和停止频道.还有一个test方法!待调查是做什么的.
+
+
+
+
+==================http server=====================
+
+
+
+
+servhs.cpp中实现了对http的一些指令的处理.每一个http访问都通过handshakeHTTP函数来处理.
+
+
+
+
+handshakeCMD函数包含对各种形式为/admin?cmd=的http请求的处理
+
+
+
+
+发布频道的过程:当发布一个频道的时候当调用请求的处理为/admin?,经过hadshakeHTTP的分派,转而调用 handshakeCMD(对应的cmd=fetch),先根据表单的内容(从url解析出来)填充一个新的ChanInfo,转而调用ChanMgr的 createChannel方法,该方法把新的频道加入到频道链表中,然后调用startUrl方法中启用了一个新的线程,该线程的执行函数是 stream方法,其中的主要的功能是调用了findHitList方法,如果找到那么调用addHitList
+
+
+
+
+=================core lib========================
+
+
+
+
+ChanMgr 中包含频道的链,其中变量channel是频道链表的表头指针,
+
+
+
+
+
+
+
+2.2 corlib总体分析
+
+
+
+
+
+
+
+2.2.1 stream.cpp分析
+
+
+
+
+
+
+
+Stream.cpp有三个类 FileStream String IndirectStream MemoryStream
+
+
+
+
+
+
+
+FileStream封装了File类
+
+
+
+
+
+
+
+FileStream::openReadOnly(const char *fn) 以只读二进制方式打开文件
+
+
+
+
+FileStream::openWriteReplace(const char *fn) 以可写二进制方式打开文件
+
+
+
+
+FileStream::openWriteAppend(const char *fn) 以附加二进制方式打开文件
+
+
+
+
+FileStream::close() 关闭文件
+
+
+
+
+FileStream::rewind() 让文件指针重新定位到头部
+
+
+
+
+FileStream::length() 返回文件长度
+
+
+
+
+FileStream::eof() 判断文件是否结束
+
+
+
+
+FileStream::read(void *ptr, int len) 在指定的文件指针位置读文件
+
+
+
+
+FileStream::write(const void *ptr, int len) 在指定的文件指针位置写文件
+
+
+
+
+FileStream::flush() 清空文件缓冲区
+
+
+
+
+FileStream::pos() 得到文件指针的位置
+
+
+
+
+FileStream::seekTo(int pos) 搜索文件到指定位置
+
+
+
+
+
+
+
+2.2.2 wsocket.cpp分析
+
+
+
+
+
+
+
+WSAClientSocket::init() //建立winsock2.0版本的套接字
+
+
+
+
+ClientSocket::getHostname(char *str,unsigned int ip) //把IP转换为主机名
+
+
+
+
+ClientSocket::getIP(char *name) //同过主机名得到IP
+
+
+
+
+WSAClientSocket::setLinger(int sec) //socket延时等待未到达数据,sec为0时不设置延时
+
+
+
+
+WSAClientSocket::setBlocking(bool yes) //设置socket为阻塞/非阻塞模式
+
+
+
+
+WSAClientSocket::setNagle(bool on) //可以减轻TCP协议在传送小包上的问题.如果没有配置service nagle命令,在远程登录进程钟每个字符都需要占用CPU中断
+
+
+
+
+(感觉层级SOL_SOCKET应该改成IPPROTO_TCP1)
+
+
+
+
+WSAClientSocket::setReuse(bool yes)// 可以让一个socket绑定正在使用的地址
+
+
+
+
+WSAClientSocket::resolveHost(const char *hostName)// 通过主机名得到hostent结构体
+
+
+
+
+WSAClientSocket::open(Host &rh) //建立TCP socket
+
+
+
+
+WSAClientSocket::checkTimeout(bool r, bool w) //检查连接是否超时。多端口复用函数select在调用前要首先设置监听的端口数目，FD_ZERO是清空端口集，FD_SET 是设置端口集。select函数常常用在用一个进程监听多个服务器端socket。
+
+
+
+
+WSAClientSocket::getLocalHost() //得到主机IP
+
+
+
+
+WSAClientSocket::connect() //连接远端地址，第一个参数怎么是unsigned int型，不是socket型？
+
+
+
+
+WSAClientSocket::read(void *p, int l) //得到接收字节
+
+
+
+
+WSAClientSocket::readUpto(void *p, int l) //和上面的函数完全一样- -!
+
+
+
+
+WSAClientSocket::write(const void *p, int l) //发送数据
+
+
+
+
+WSAClientSocket::bind(Host &h) //建立TCPsocket设置为非阻塞socket,设置为可重复绑定地址，绑定主机地址，并开始监听。
+
+
+
+
+WSAClientSocket::accept() //接收连接请求,设置为非阻塞模式
+
+
+
+
+WSAClientSocket::close() //关闭socket
+
+
+
+
+WSAClientSocket::readReady() //判断是否在监听多个服务器端socket
+
+
+
+
+
+
+
+2.2.3 xml.cpp分析
+
+
+
+
+
+
+
+XML::Node::add(Node *n) //可以看成XML::Node:: add(Node *n)添加兄弟结点或者子结点
+
+
+
+
+nibsToByte(char n1, char n2) //没用到
+
+
+
+
+XML::Node::getBinaryContent(void *ptr, int size) //没用到
+
+
+
+
+XML::Node::setBinaryContent(void *ptr, int size) //没用到
+
+
+
+
+XML::Node::setContent(const char *n) //复制字符串
+
+
+
+
+XML::Node::setAttributes(const char *n) //设置属性名和属性值的关联，判断并掉过\和=来读取属性？？？在XML::Node::构造函数里用
+
+
+
+
+XML::Node::init() //清空父、兄弟、子结点
+
+
+
+
+XML::Node::findAttrInt(const char *name) //通过属性名得到属性值，比如findAttrInt("bitrate")得到比特率的数值
+
+
+
+
+XML::Node::findAttrID(const char *name) //通过属性名得到属性ID
+
+
+
+
+XML::Node::findAttr(const char *name) //通过查找对比属性名得到属性值的ID
+
+
+
+
+2.2.3 servhs.cpp分析
+
+
+
+
+Servent::handshakeHTTP(HTTP &http, bool isHTTP)
+
+
+
+
+if (http.isRequest("GET /"))
+
+
+
+
+else if (http.isRequest("GIV"))
+
+
+
+
+else if (http.isRequest(PCX_PCP_CONNECT))
+
+
+
+
+else if (http.isRequest("PEERCAST CONNECT"))
+
+
+
+
+else if (http.isRequest("SOURCE")) 
+
+
+
+
+else if (http.isRequest(servMgr->password))

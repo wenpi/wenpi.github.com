@@ -1,0 +1,15 @@
+---
+comments: true
+date: 2006-03-26 18:13:00
+layout: post
+slug: jvending%e4%b8%8e%e9%83%91%e6%98%80%e7%9a%84%e6%89%8b%e6%9c%ba%e5%8a%a8%e6%bc%ab%e4%bc%a0%e6%83%85
+title: JVending与郑昀的手机动漫传情
+wordpress_id: 793329
+categories:
+- 未分类
+---
+
+早前浏览sourceforge时就注意到[JVending,](http://sourceforge.net/project/showfiles.php?group_id=102914)也曾看过,因为组件太多而没有下载,今日在看[郑昀手机动漫传情](http://blog.csdn.net/zhengyun_ustc/archive/2005/11/07/524616.aspx)文章又出现了JVending,就拿不定期做一对比,发现JVending与PopupWinks On Mobile功能上有相似之外,但JVending是一个完整基于JXTA在MIDP2上一个PUSH RI的显示解码方案  
+  
+其中[肥嘟嘟](http://spaces.msn.com/feidudu/Blog/cns!1pZ1tStoZOxCIwfCEQegq0fg!140.entry)也的一篇解说文章  
+

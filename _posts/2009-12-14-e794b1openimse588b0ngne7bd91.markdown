@@ -1,0 +1,45 @@
+---
+comments: true
+date: 2009-12-14 15:05:00
+layout: post
+slug: '%e7%94%b1openims%e5%88%b0ngn%e7%bd%91'
+title: 由Openims到NGN网
+wordpress_id: 1576805
+categories:
+- 未分类
+---
+
+一个牛人(pingp76 @ yahoo.com)用开源openIMS core为基础实现NGN网，及在NGN网上的丰富应用  
+一个人可以用Open IMS Core做什么呢是？  
+1 首先架设好OSIMS Core  
+2 将一些开源的IMS部件整合进去，例如Presence，XDMS，AS（Sailfin和SIP Servlet，JSLEE），Media Server等等。如果没有的话，也可以自己开发简单的Prototype。例如Presence Server，用SIP Servlet编的话，两三天就够了。这样就实现了一个基本IMS Testbed。  
+2.5 现在Weblog所有产品也都免费应用可，总之可以干很多整合的。  
+3 然后可以试一试和其他VOIP系统互联互通，例如Astrix。还可以尝试多个核心网直接Roaming等等。可以尝试一下和现在的各种IP PBX产品进行互联互通，设计一下转换的Gateway。  
+4 利用2和3，可以自己开发一些简单的IMS基本服务了，例如PTT，IPTV，IVR，Call Center等等，这些都有OMA或者3GPP有相关标准了。  
+5 然后可以自己开发OSS BSS系统，例如OSS/J，这又一大堆东西可以做。On line, Off line charging System。  
+6 没事的话，可以尝试把OSIMSCore升级到TISPAN 1.0，或者开发出一个PSTN Emulation System，也不难的。  
+  
+下面就是比较有趣的东西，可以做  
+7 然后可以以AS为基础，实现Parlay X GW，这个也不难，3PC，Presence等等。  
+8 可以将Sailfin整合进JBOSS里面，等于就是把J2EE和Web世界那一整套的东西全部搬过来了，哈哈，怎么会没有东西做呢，Mush UP！  
+9 加上Enterprise Service Bus，就是现在最热门的Internet Telecom SOA Service Delivery Platform。用Active BEPL作为BPM，自己设计Policy Management Engine （Rule Machine）。  
+Active Bepl也有GUI来作为Service Creation Environment，实现快速新的服务。用UDDI作为Service Repository。当然你还可以实现整套的OSS系统，Service Provisioning等等，很多东西。  
+10 因为是Internet J2EE这样，实际上和底层通讯已经不是很有关系了，你可以把很多现在最热门的东西也整合进来，Google的那些东东  
+11 还有另外一个方面是Identity，如何实现SIP和WEB多Protocol的Single Sign on呢。例如Open ID，General Bootstrapping Architecture。  
+  
+有了SDP，完全基于web Service，就可以进行一些Mush up的应用开发了。低级的方式用Parlay X，高级的方式有SDP。  
+12 将家用基站整合进OPEN IMS Core，加上IPTV，是不是可以在家实现FMC和4P？自己可以搞出VCC等等多种服务。  
+13 可以在现在所有的网站上搞一些Mush up了！做个网站，将Google Map这些Location Service搞进来，然后用Parlay X的Presence, Location，Address List Management等等全加进来。然后把这些嵌入各种SSN Facebook之类的，是不是很有趣？总之现在一切在J2EE，SOA世界里面有的东西都可以拿来 Mush，AJAX，Google，Ebay，Amazon，LinkedIn，iTune，云计算等等等等，一切Internet里面的服务都可以整合 起来，贴上SOA的标签。  
+14 将SAP，Oracle，金蝶等等的企业管理，电子商务，电子政务，ERP等等软件平台也整合起来，然后卖所以通讯导向的管理这种概念。因为人类社会的组织形式就是通讯的形式，理论上所有企业zf的流程，可以用通讯来串起来。  
+  
+14 当然还有终端方面，这是大有可为的！Symbian，Adroid还有最HOT的iPhone！现在IMS和支持高级Mushup功能的终端还没有统一标 准，开发出一个就可以拿风投了。如果能将IMS Client，浏览器，Web Service Adaptor等等全部整合在一起，就很暴力了。现在Adobe Flash也要到有VOIP终端的功能，也可以Mush搞进去。iPhone的终端可以放到Apple Store去卖。你就是未来的Steve Jobs，bill gates，Bell。  
+  
+有了上面的基础建设，  
+1 把上面所有全部在家里架好，然后去中关村买个写SIM卡的机器，想法弄个FTTH，就可以自己当运营商了。然后去中国移动，电信等等地方，请求和对方合作。  
+2 去Accenture，IBM，HP这些地方，请求当个集成的Consultant。  
+3 去华为，中兴，请求当民工。  
+4 自己创业，骗骗风投。  
+  
+这样就可以自己在家架个NGN。争取全部装到一个笔记本里面，然后配合PPT当面给人家演示一把。  
+  
+一个完整的NGN通信网络诞生了，就差接入网了。如果再架根天线，到华为买两3G Femtocell，就可以实现山寨WCDMA网了。一台笔记本实现all ip的运营网络。

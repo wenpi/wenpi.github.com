@@ -1,0 +1,18 @@
+---
+comments: true
+date: 2010-05-18 16:50:08
+layout: post
+slug: '%e6%9c%89%e7%a9%ba%e6%97%85%e8%a1%8c%e7%bd%91%e5%b0%86%e5%9c%a8%e5%bf%ab%e6%8d%b7%e9%85%92%e5%ba%97%e9%a2%84%e8%ae%a2%e5%9f%ba%e7%a1%80%e4%b8%8a%e5%a2%9e%e5%8a%a0%e9%9d%92%e5%b9%b4%e6%97%85%e8%88%8d'
+title: 有空旅行网将在快捷酒店预订基础上增加青年旅舍推荐及户外经验及线路推荐
+wordpress_id: 1578876
+categories:
+- 未分类
+---
+
+**有空旅行网**早在去年就基本上开发完成上线，但因为玩物丧志，一直没有管这个网站运营的，基本也没啥用户使用。
+
+但[有空旅行网](http://www.youkong.cn)是要做为我全部旅行理念的体现者，我的商务旅行快捷实时的机票预订，**快捷酒店预订**，实时结算等速度理念要在有空旅行网上得到体现。当前[有空旅行网](http://www.youkong.cn/)产品主功能功能体现是商务旅行方式，主要是提供全方位的[如家快捷酒店](http://www.youkong.cn/inn/homeinns/)，[锦江之星酒店](http://www.youkong.cn/inn/jj-jin/)，[汉庭快捷酒店](http://www.youkong.cn/inn/htinns/)预订，[格林豪泰酒店](http://www.youkong.cn/inn/greentree/)，[7天连锁酒店](http://www.youkong.cn/inn/7daysinn/)，[莫泰168酒店](http://www.youkong.cn/inn/motai168/),[速8酒店](http://www.youkong.cn/inn/super8/)，[桔子酒店](http://www.youkong.cn/inn/orangehotel/)等快捷酒店预订。从查找到预订都是实时化的，非常方便的实现商务人士的需求。
+
+同时这一段时间的户外重温，增加我对户外爱好者的旅行理念。穷游，自虐，喜欢青年旅舍的小资情调，同时也喜欢原生态的风景。不喜欢门票，也不喜欢人扎堆。
+
+基于针对户外流行的理念，我将在有空旅行网原来主推[快捷酒店预订](http://www.youkong.cn/inn/)的产品功能上增加[青年旅舍的预订](http://www.youkong.cn/inn/jj-inn/)或者推荐版块，同时再增加户外路线的推荐，征集及户外设备，经验共享。

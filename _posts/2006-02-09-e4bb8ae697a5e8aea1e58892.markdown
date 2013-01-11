@@ -1,0 +1,14 @@
+---
+comments: true
+date: 2006-02-09 08:48:00
+layout: post
+slug: '%e4%bb%8a%e6%97%a5%e8%ae%a1%e5%88%92'
+title: 今日计划
+wordpress_id: 719896
+categories:
+- 未分类
+---
+
+1:买只好的增值业务测试手机
+
+2:整理视讯新干线的内容与申请材料

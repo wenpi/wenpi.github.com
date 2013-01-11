@@ -1,0 +1,66 @@
+---
+comments: true
+date: 2007-03-24 08:43:00
+layout: post
+slug: '%e5%b7%a5%e4%bd%9c%e5%8d%9a%e6%96%87-%e5%b0%8f%e7%bd%91%e7%ab%99%e8%bf%90%e8%90%a5'
+title: 工作博文---小网站运营
+wordpress_id: 1144109
+categories:
+- 未分类
+---
+
+小网站的运营就是站长们最擅长的:**做网站，搞流量，赚广告费**
+
+
+
+
+第一步:做网站
+
+
+
+
+做网站先定域名再买空间,接下来网站成形,有点想法搞点特色,不懂技术找源码下载,进入后台,设置栏目,通过采集系统采集内容
+
+
+
+
+第二步:推广网站
+
+
+
+
+论坛,qq群,链接,但最有效的是SEO(搜索引擎优化),让自己的内容符合GOOGLE与BAIDU的搜索要求
+
+
+
+
+SEO主要是网站内容的关键字提炼, 排名，搜索流量，还有转化率
+
+
+
+
+几个SEO文章链接
+
+
+
+
+[ google搜索引擎优化圣经--一篇殿堂级的文章](http://www.seo.org.cn/forum/view_3766.html)
+
+
+
+
+[seo语录](http://www.seo.org.cn/forum/view_3769.html)
+
+
+
+
+第三步:投放广告
+
+
+
+
+加入[Google Asense](http://www.51zhuanqian.com/Google-AdSense/),google广告一个点击都是搜是几十美分,上下面这些网站可以看到国内站长对各大广告联盟的评价和经验：  
+  
+[http://www.im286.com/forumdisplay.php?fid=52](http://www.im286.com/forumdisplay.php?fid=52)  
+[http://www.zhanzhang.cn](http://www.zhanzhang.cn/)  
+[http://www.51zhuanqian.com/](http://www.51zhuanqian.com/)

@@ -1,0 +1,172 @@
+---
+comments: true
+date: 2007-01-06 12:02:00
+layout: post
+slug: '%e5%ae%a2%e6%9c%8d%e5%a4%9a%e6%a0%b7%e5%8c%96-msn%e6%9c%ba%e5%99%a8%e4%ba%ba'
+title: 客服多样化-MSN机器人
+wordpress_id: 1108959
+categories:
+- 未分类
+---
+
+在语音时代,大多数留的客服电话是电话号码,以至于我们都想出来了话告这种业务,但越来越多的互联网文字通讯让很多网民习惯了文字沟通,而非语音,这也是为什么QQ,MSN都有语音通话,而大多数用户却不使用的原因,虽然有说话打扰别人,或者秘密不适应语音的原因外,更多的是互联网用户适应了文字的沟通,比如我,MSN上说事情肯定比电话中说得更清楚,因而现在淘宝等互联网业务留下的更多的是QQ与MSN客服了,对于一些标准的业务,MSN机器人客服也有很大的市场
+
+
+
+
+写在前面：  
+我不是开发人员，不是高手，就是自己比较爱玩。在技术上，没有什么喜欢摸索的精神，而是喜欢投机取巧。在这篇文章里，你也不能"少劳而获"地通过我的机器人修改出一个自己的机器人，因为自己觉得程序写的比较臭，所以不会open source。但是，如果你对.net或者C#有点了解的话，相信从这篇文章里，你可以找到一切所需的资源，来开发一个自己的，绝对可用的msn机器人。要和我的机器人聊天，可以加tbot01@hotmail.com，名字叫"塔奇克马"，是从动画片攻壳机动队得名。同时，你也可以去![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.guanqun.com](http://www.guanqun.com/)，那里有一个和这个MSN机器人一样的网页聊天机器人，可以先聊聊看，尽量用中文聊。  
+  
+这不是一篇新手入门的文章，如果你不知道什么是.NET，不了解数据库方面的哪怕是一丁点东西，建议你先看看。同时，也希望真正的高手不要笑话打击我，毕竟一个普通的，非开发人员的电脑爱好者通过摸索，并告诉大家怎样做一个好玩的东西，不是一件错事。  
+  
+一、为什么要做MSN聊天机器人  
+  
+1 我能想到的原因  
+  
+最重要的是因为很好玩。你的MSN机器人说的话，一定体现你的性格（如果你希望这样的话）。当然，这是我的理由，作这个机器人的初衷仅仅是突然有一天自己想做。也许你也希望你的机器人可以帮助你做一些事情，类似一个专家系统或是客服系统等等。  
+  
+2 现在的MSN聊天机器人  
+  
+现在MSN机器人有很多，如果你加过MSN机器人，我想你列表上最多的是一个叫做"小布"或者是他兄弟姐妹一大堆的家伙们(![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.9zi.com](http://www.9zi.com/))，可能基于负载的考虑，每次上线你都可能被他们一家子的一堆加入好友的请求包围。还有一些所谓的"免费短信"机器人，我一直就是做SP的，我直接说，为了不耽误你们赚钱，我不对这种机器人加以什么评论。可以提一下MsgerAI（msgerai@hotmail.com）这个机器人，开发它的这位老兄非常希望做一个可以像人一样具有智能的东西，虽然可能在他有生之年都无法完成，不过我还是祝他成功。毕竟有梦想就是好的，而且这个机器人现在也可以为他完成些工作(![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.funnyok.net/nlp](http://www.funnyok.net/nlp))。还有一些其他的MSN机器人，比如专门提供信息查询服务的，帮你搜索google的等等。MSN进行时里面有列表(![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.msning.com](http://www.msning.com/))，自己去看看就好了。  
+  
+二、为什么用.NET  
+  
+其实理由很简单。C#和Java很像，但是Java我实在找不出一个非常好用的，符合自己使用习惯的IDE来。而C#就不同，Vs.NET(![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://msdn.microsoft.com/vstudio/](http://msdn.microsoft.com/vstudio/)) 当然最好用，C# Builder(![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.borland.com/csharpbuilder/](http://www.borland.com/csharpbuilder/))也不错，连SharpDevelop(![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.icsharpcode.net/OpenSource/SD/](http://www.icsharpcode.net/OpenSource/SD/))用起来都相当舒服。所以选择.NET比较好。  
+  
+另外，.NET在开发上非常方便，只要你有一点点开发基础，用.NET写程序就不是很难。我是站在一个使用者而非开发者的角度，不用去钻研太多技术层面，或是优化的东西，我没那能力也不想进微软研究院。  
+  
+建议你使用最新版Visual Studio.NET，可以省去很多麻烦的事儿。  
+  
+同时，.NET开发可以找到的资源也有很多，我们接下来会提。  
+  
+三、你要一个什么样的聊天机器人  
+  
+1 开发前的设想  
+  
+我这里讨论的就是"聊天机器人"这个概念，意思是，他能做的就是陪你聊天。你要有一个程序去"教"他说话，同时要让他明白话语中包含的大概意义，还能够做基本上不怎么离谱的回答。  
+  
+2 还可以让他做什么  
+  
+你还可以让他做很多其他的事情，比如查询ip，手机号码，注册号，航班号，或者直接让他去查google，帮你搜索。这些也都不是什么麻烦的事情，只要你想。  
+  
+四、先让机器人开口说话  
+  
+不管你的机器人聪不聪明，让他能在MSN上象摸象样地回答是最重要的。所以，你需要有一个MSN帐号，连接到MSN服务器，取得各种服务器的消息，同时发送消息回服务器。  
+  
+当然，你可以分析MSN的协议（![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.hypothetic.org/docs/msn/index.php](http://www.hypothetic.org/docs/msn/index.php)），自己写通讯部分。不过我提过，我是个喜欢投机取巧的人，所以，找个能用的接口用就好了。所以，我找了些MSN的开发接口。  
+  
+MSNHelper:   
+![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://sourceforge.net/projects/msnphelper/](http://sourceforge.net/projects/msnphelper/)  
+  
+dotMSN:  
+![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://members.home.nl/b.geertsema/dotMSN/](http://members.home.nl/b.geertsema/dotMSN/)  
+  
+这两个都是为.NET开发的，我用dotMSN，它使用MSNP8协议。注意dotMSN不要用sourceforge上的版本，要用上面给出的地址。  
+接下来，下载这个例子：  
+![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://members.home.nl/b.geertsema/dotMSN/example/Example.zip](http://members.home.nl/b.geertsema/dotMSN/example/Example.zip)  
+  
+用vs.net打开，编译，执行。  
+  
+看懂了吧。登录之后随便双击列表上的某个人，会发送给这个人一句"Hello world!"。你已经可以不通过MSN原来的程序，而直接和人说话了。  
+  
+这部分的代码是这样的：  
+  
+private void ContactJoined(Conversation sender, ContactEventArgs e)  
+{  
+// someone joined our conversation! remember that this also occurs when you are  
+// only talking to 1 other person. Log this event.  
+Log.Text += e.Contact.Name + " joined the conversation.\r\n";  
+  
+// now say something back. You can send messages using the Conversation object.  
+sender.SendMessage("Hello world!");  
+}  
+  
+意思是当对方加入聊天后，你就给他发一个"Hello world!"的消息过去。这时候如果你列表上的人双击你的名字，也同样会收到一个Hello World!。  
+  
+五、让机器人懂中文  
+  
+1 数据库  
+  
+因为我们要做中文聊天机器人，语料库的大小直接关系到你的机器人是不是聪明。由于自己的习惯，我用了mysql作为存放语料库和中文分词库的数据库。而且mysql速度极快。当然，你要用Access或者Sql Server，完全可以，而且更容易些。.NET调用Mysql的库可以在这里找到MySQL Driver CS  
+![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://sourceforge.net/projects/mysqldrivercs/](http://sourceforge.net/projects/mysqldrivercs/)  
+  
+  
+2 整句匹配  
+整句匹配这个概念很简单。聊天嘛，不认识的人一般都会要上来就说"你好"，或者"hi~~"之类的。这种话通常很简单，而且没有什么太多的变化，直接让机器人回答就行了。比如对方说"你好"，机器人看到这个"你好"，就直接回答"你好"，就可以了。或者对方说"88"，你可以让机器人说"再见"，或者88什么的。。这就叫整句匹配。就是机器人拿到整个的句子，在库里面一查，啊，库里有这句话怎么回答，挑出一句回答过去，对方不会觉得这个机器人笨。  
+  
+甚至如果对方说"你好笨"，你让机器人回答"我才不笨呢"，对方一定会觉得，这个机器人还行，还知道别人说他笨。  
+  
+3 中文分词  
+  
+一个聊天机器人当然要懂些中文。中文处理的基础就是中文分词。分词是什么？"分词就是将连续的字序列按照一定的规范重新组合成词序列的过程。"这个定义是我抄的。请查阅这篇文章：![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.hylanda.com/center/knowledge.htm ](http://www.hylanda.com/center/knowledge.htm )他们做中文分词应该有一定成绩。国内的分词系统，ICTCLAS做得也比较好。有VC的源代码，可以下来看看。  
+![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.nlp.org.cn/project/project.php?proj_id=6](http://www.nlp.org.cn/project/project.php?proj_id=6)  
+  
+有人会说，这个东西我不懂，我也没研究过。其实我也不懂。只不过，如果不做中文分词，聊天机器人就只能停留在证据匹配的地步。我们可以使用最大匹配法，对聊天机器人接收到的话做简单的分词。关于算法，请参阅詹卫东先生的这个讲义，估计你一看就明白了。  
+  
+课程名称：中文信息处理基础  
+  
+![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://ccl.pku.edu.cn/doubtfire/Course/Chinese%20Information%20Processing/2002_2003_1.htm](http://ccl.pku.edu.cn/doubtfire/Course/Chinese%20Information%20Processing/2002_2003_1.htm)  
+  
+下载这个PPT讲义：![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://ccl.pku.edu.cn/doubtfire/Course/Chinese%20Information%20Processing/contents/Chapter_07_1.ppt](http://ccl.pku.edu.cn/doubtfire/Course/Chinese%20Information%20Processing/contents/Chapter_07_1.ppt)  
+  
+分词算法不需要太复杂，简单点就好。  
+  
+另外分词算法需要一个中文分词库。我提供了一个mysql的，这里可以下载。导入到你的mysql里面就可以。其他数据库其实把sql语句简单改改也可以用。  
+中文分词库下载：![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://www.guanqun.com/down/wordlist.rar](http://www.guanqun.com/down/wordlist.rar)  
+  
+4 词语的匹配  
+  
+仅仅会分词还不够，如果真的要让机器人了解人说的话，肯定需要一些人工智能的算法。我们就是做个机器人玩玩，没必要研究的那么深。人工智能走到现在，太聪明的聊天机器人也少之又少。而且，让专业的研究人员去研究就好了，我们仅仅就是玩玩。所以呢……我们就用一个最简单的办法。我们的方法是，让机器人找这一句话的关键词，这句话大概的词性搭配，再去语料库里面找到符合这样规则的回答的话。  
+  
+举个简单的例子：  
+比如对方说：  
+  
+"你真好玩"  
+  
+我们先用分词算法，把这句话分成  
+  
+"你 真 好玩"，  
+  
+然后找出关键词"好玩"。同时把这句话的词性搭配也记录下来。 这样，当找到关键词"好玩"在语料库中的时候，我们再来找是否有类似这这句话词性搭配的回答，如果有，随机回答出一句："哈哈。。。我就喜欢你这么说。"，这样，可以给聊天者比较好的感觉。  
+  
+那么问题来了，如何找出关键词呢？ 我的方法是……（比较烂，但是通常有效），找出这句话中长度最长的词作为关键词。没有为什么，因为这样速度会快些。如果一句话中所有的词都被扫描成为关键词，再去查库，会出现些匹配上的问题。（不科学，但是通常有效）。  
+  
+五、让机器人再"聪明"些  
+  
+1 整句匹配语料库的设计  
+  
+第一步当然是做你的整句匹配语料库。语料库都要自己写的，不要偷懒。找出别人最常说的话，比如你好谢谢对不起什么的，多放些回答在里面，免得每次回答都是一样的，然后要回答的时候，先写一句sql来查询，如  
+  
+select * from reply where `key` = '"+sentense+"' order by rand() limit 1  
+  
+把找到的话直接回复过去就可以了。如果找不到整句匹配，再做分词处理。  
+  
+2 分词匹配语料库的设计  
+  
+因为我们分词算法也没有经过什么优化，同时，我们找出关键字的办法也不是那么的好，所以，你给出的回答一定要不那么清晰。说白了就是，回答的话要有些"含糊不清"才可以。目标就是，让人觉得机器人对他说的话已经理解了，回答出来的还算比较"对路"。不要求100%对路，只要有40%以上对路，聊天的人基本就可能会接受。同时，回答的语料库，最好可以引导对方再次回答的时候，可以说出你语料库里面有的，最好是可以整句匹配的句子。  
+  
+举个好玩的例子：  
+  
+问题:你是男的还是女的？/你是男的还是女的/你是男的还是女的? (是否有标点符号没关系，我们要记录句子的词性搭配，同时，要对标点符号做些处理)  
+  
+像这样一句话，我们可以通过分词，找出关键词："还是"，而且通过判断词性，可以知道，这是一句问句。而且问的是在两种情况之间选择。（当然，我们通过简单的算法，没法知道这句话其实是问性别）  
+  
+对于这样的问题，你的机器人怎么回答？其实很简单，首先，回答要"对路"，尽量不让人觉得答非所问，至少让人觉得，你的机器人是知道对方在问什么的。所以，我的机器人这样回答：  
+  
+机器人回答：都是。。。哈哈  
+  
+因为回答的是聊天用语，而且带点开玩笑的意味，所以会使聊天者觉得，这个机器人还不是那么笨。  
+  
+这只是一个简单的例子。很多具体的句子还得你自己去分析。当然，语料库越多，机器人懂的就越多，也就越聪明了。  
+  
+3 匹配不到关键字怎么办  
+  
+语料库不是很多的情况下，很可能我们的分词算法匹配不到合适的回答来应付。所以我们还要另外做一个语料库，用来在实在匹配不到关键词的时候，进行回答。这样的回答比较需要类似"算卦"的人的回答技巧，因为对方可能说任何话，而我们的机器人不明白。所以，要想办法"蒙混过关"，同时，尽量引导对方向你机器人可能回答的方面说。你可以试着跟"小布"聊聊天，会发现它回答不出来的时候，就会随便挑一句"佛经"来说。  
+  
+其实最重要的一个技巧就是，学习一下算卦的人说的话，都是云里雾里的，让人摸不到头脑，还觉得可能是对的。我们就要让机器人学习这种技巧，来达到看上去"聪明"的目的。  
+  
+  
+最后的话：  
+其实写这样的一个机器人程序很快的，如果熟悉些的话，估计一天应该就可以写出来。我大概用了一天半，还加上准备些语料库的时间。如果你真想做个稍稍"聪明些"的机器人来玩，这篇文章应该可以为你剩下至少3-5个小时的找资料的时间。如果你懒得自己研究，也有别的公司做的只能整句匹配的程序可以下载，自己下一个玩玩也就算了。  
+  
+原文最早发表于我的blog: ![](http://www.nettrust.com.cn/forum/forum/images/url.gif)[http://bot.donews.net/bot ](http://bot.donews.net/bot )转载请不要去掉这个

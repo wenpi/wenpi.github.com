@@ -1,0 +1,15 @@
+---
+comments: true
+date: 2009-12-01 14:27:00
+layout: post
+slug: 8%e4%b8%aaoogle-wave-%e9%82%80%e8%af%b7%e7%a0%81%e5%8f%91%e6%94%be
+title: 8个oogle Wave 邀请码发放
+wordpress_id: 1575120
+categories:
+- 未分类
+---
+
+在一个朋友的邀请之下，注册了google wave，当前[译言](http://www.yeeyan.com/)及[google粉丝](http://www.douban.com/group/google/)对google wave都拼了命的介绍，表扬。  
+google wave 是什么，当前这个在网上定义很多，我比较趋向于这个定义：google wave是一个整合多种网络应用----包括社交网站（Facebook）、图片（flickr）、微博客（twitter）、博客阅读（google reader）、电子邮件（gmail）、即时通讯（gtalk）、文件（google docs）等等大多数互联网社会化应用----的平台。更具战略意味的是，wave还开放了免费API（一种可以让其它程序调用的应用程序编程接口），使得其 它应用开发公司可以将自己的开发成果轻松地自行整合到wave中去。  
+google wave是google不再是搜索引擎提供商而是网络（这个网络甚至超过了互联网而蔓延到电信网络、移动网络、广电网络）入口提供商的战略产品。  
+使用一段时间后，google 发给了我8个邀请码，如果有兴趣，请留言gmail邮箱或者直接发信到我gmail邮箱huwenshu@gmail.com索取

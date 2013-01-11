@@ -1,0 +1,34 @@
+---
+comments: true
+date: 2010-09-17 11:13:24
+layout: post
+slug: '%e6%9c%89%e7%a9%ba%e6%97%85%e8%a1%8c%e7%bd%91%e5%85%a8%e6%96%b0%e4%b8%8a%e7%ba%bf%ef%bc%8c%e7%ac%ac%e4%b8%80%e6%ad%a5%e4%b8%bb%e6%8e%a8%e5%bf%ab%e6%8d%b7%e9%85%92%e5%ba%97%e9%a2%84%e8%ae%a2'
+title: 有空旅行网全新上线，第一步主推快捷酒店预订
+wordpress_id: 1578888
+categories:
+- 未分类
+---
+
+[有空旅行网](http://www.youkong.cn/)很早时间我就开发搁上去了，但一直没有打理，其实有空旅行网的计划很宏伟。
+
+第一步做酒店预订，主推快捷酒店预订
+
+第二步预订房间向青年旅舍及民宿拓展
+
+第三步开始超级目的地，旅游目的地介绍
+
+第四步组织旅游目的地自助游，以背包客为主
+
+但很长时间过去了，第一步都没做怎么样的推广，经过一段时间的折腾，组建订房呼叫中心，选择了4006069188做为整个有空旅行网人工受理呼叫中心接入号。同时也调试好了跟各个酒店的实时预订接口，用户可以直接网站自助式预订。
+
+尤其像
+
+[如家快捷酒店预订](http://www.youkong.cn/inn/homeinns/)： http://www.youkong.cn/inn/homeinns/
+[锦江之星酒店预订](http://www.youkong.cn/inn/jj-inn/)： http://www.youkong.cn/inn/jj-inn/
+[汉庭酒店预订](http://www.youkong.cn/inn/htinns/)： http://www.youkong.cn/inn/htinns/
+[格林豪泰酒店预订](http://www.youkong.cn/inn/greentree/)： http://www.youkong.cn/inn/greentree/
+[莫泰酒店预订](http://www.youkong.cn/inn/motai168/)： http://www.youkong.cn/inn/motai168/
+
+是可以直接即时确认预订的，接口直通各快捷酒店的门店。
+
+先做商业模式成熟酒店预订，但有空旅行网产品的目标是都市人有空旅行一系列解决方案，尤其是自助游方面。

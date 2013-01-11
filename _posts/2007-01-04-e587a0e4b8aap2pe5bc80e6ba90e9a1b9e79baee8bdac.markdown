@@ -1,0 +1,99 @@
+---
+comments: true
+date: 2007-01-04 17:11:00
+layout: post
+slug: '%e5%87%a0%e4%b8%aap2p%e5%bc%80%e6%ba%90%e9%a1%b9%e7%9b%ae%e8%bd%ac'
+title: '几个p2p开源项目[转] '
+wordpress_id: 1108141
+categories:
+- 未分类
+---
+
+[来源：][http://www.xbnu.org/ezone/me/1/archives/2006/137.shtml](http://www.xbnu.org/ezone/me/1/archives/2006/137.shtml)
+
+
+
+
+
+
+
+
+
+
+**最近看的几个开源项目的印象**
+
+
+  
+
+
+
+
+
+
+不是专业的评价，就像读书笔记吧：
+
+
+
+
+1、**Azureus([http://azureus.sourceforge.net](http://azureus.sourceforge.net/))**：这是java版的betorrent，最新版本2.4.0.2。从网上直接下载的源代码是没法构建的，所用的库没有在包里面。可以到：[http://azureus.cvs.sourceforge.net/azureus/](http://azureus.cvs.sourceforge.net/azureus/)这个地方去找。对我们研究的意义主要在于参考其算法。
+
+
+
+
+2、**Shareaza([http://www.shareaza.com/](http://www.shareaza.com/))**：这是C++版的，他最大特点就是集成了对多个流行P2P文件格式的支持，有了它可以下载电驴、.torrent等，目前版本是2.2.1.0。对： [EDonkey2000](http://www.infoanarchy.org/wiki/wiki.pl?EDonkey2000), [Gnutella](http://www.infoanarchy.org/wiki/wiki.pl?Gnutella), [BitTorrent](http://www.infoanarchy.org/wiki/wiki.pl?BitTorrent) 及 [Gnutella2 (G2)](http://www.gnutella2.com/) 都支持，界面也很酷，支持换肤。大家可以直接下载源代码构建（ide环境是.net）。
+
+
+
+
+3、**icecast(**[**http://www.icecast.org**](http://www.icecast.org/)**)**：给人感觉比较简单，主要实现了对mp3的网络播放，可用于构建网络电台。
+
+
+
+
+4、**P2P Networking Theory(**[**http://cis.poly.edu/~ross/p2pTheory/**](http://cis.poly.edu/~ross/p2pTheory/)**)**：这是几个大学的一些P2P领域的学者一起搞得，叫：P2P Networking理论，我觉得最大的价值是，在上面可以找到一些论文。
+
+
+
+
+5、**theora(**[**http://www.theora.org/**](http://www.theora.org/)**)**：就目前了解来看，他是干了这么一件事情："Free Video Compression "即：免费的视频压缩算法，可以下载库文件（c写的），目前支持："A year after getting import and export support for theora, Cinelerra now has distributed theora encoding support, which makes theora content creation much faster."即：对分布式编码有支持，这是很有意义的。
+
+
+
+
+6、**PeerCast(**[**http://www.peercast.org/**](http://www.peercast.org/)**)**："PeerCast is a simple, free way to listen to radio and watch video on the Internet. It uses P2P technology to let anyone become a broadcaster without the costs of traditional streaming. This means you get to hear and watch stations not normally found on commercially funded sites. "简单的讲，就是一个p2p的可以用于网络电台的流媒体软件。能够穿越防火墙、Nat等。源代码获取，需要使用"Subversion"（这个东西设计出来是替换cvs的，确实不错，有空研究下，可以到"http://www.subversion.org.cn/svnbook/"看使用说明），地址：svn://peercast.org/peercast/tags（好像要选择下，不然会搞下来好几个版本的代码），也可以找我要。
+
+
+
+
+7、**FreeCast(**[**http://www.freecast.org/**](http://www.freecast.org/)**)**： "FreeCast is a Java application which allows peer-to-peer streaming. It makes possible a stream broadcast to a large number of listeners from a simple DSL connection."java编写的P2P在流媒体的应用，下载：[http://download.freecast.org/](http://download.freecast.org/)，有源代码，可以研究研究。
+
+
+
+
+8、**ActlabTV([**http://actlab.tv/**](http://actlab.tv/technology.htm)****)**：这个页面有介绍[**http://actlab.tv/technology.htm**](http://actlab.tv/technology.htm)
+
+
+
+
+9、TrevBus([http://www.trevbus.org](http://www.trevbus.org/))：是作者在做工程学位论文时开发的，"Trevbus will enable content streamers and others to pool their unused bandwidth so content streams can be sent to a large audience"。软件需求说明：[http://www.trevbus.org/SRS.html](http://www.trevbus.org/SRS.html)，软件设计文档：[http://www.trevbus.org/SDD.html](http://www.trevbus.org/SDD.html)，理论基础？：[http://www.trevbus.org/thesis.html](http://www.trevbus.org/thesis.html)
+
+
+
+
+10、**Stream2Stream(**[**http://s2s.sourceforge.net/**](http://s2s.sourceforge.net/)**)**：java语言开发的P2P流媒体系统，"Stream-2-Stream implements multicast+, a next generation streaming protocol. Multicast+ is more efficient and requires less bandwidth than direct streaming (e.g. shoutcast/icecast). Stream-2-Stream (abbreviated "s2s" or "S2S") stations have no user limit; stations can be set up without paying a fortune for bandwidth. Stream-2-Stream saves bandwidth by passing streams from one peer to another through multicast and unicast p2p, rather than everyone getting a stream from one central server (Shoutcast/Icecast). "更多：[http://s2s.sourceforge.net/about.php](http://s2s.sourceforge.net/about.php)
+
+
+
+
+11、**P2Pradio(**[**http://p2p-radio.sourceforge.net**](http://p2p-radio.sourceforge.net/)**)**：java语言开发的P2P音视频服务和客户端系统，"P2P-Radio can distribute audio streams in the MP3 and Ogg Vorbis formats and video streams in the NSV format over the Internet. This is done in a peer-to-peer way. The broadcaster doesn't need to send the stream to every single listener, because the listeners distribute it among themselves."，好像用于学习很不错，好像是学生的一个学期论文。详细介绍：[http://p2p-radio.sourceforge.net/about.php.en](http://p2p-radio.sourceforge.net/about.php.en)
+
+
+
+
+12、**Nodezilla(**[**http://evl.sourceforge.net**](http://evl.sourceforge.net/)**) **：这是一个由java编写的安全的、分布的并且高容错的路由系统。他的主要目标就是，为分布式应用（聊天、高清晰视频多播、文件共享、安全文件存储）提供底层。目前构建的应用有：[Anonymous File sharing](http://evl.sourceforge.net/install_guide.html), [Hierarchical Multimedia Streaming](http://evl.sourceforge.net/rtp_guide.html), [Digital photo sharing with selected friends](http://evl.sourceforge.net/peersnap.html), [Distributed BitTorrentStore Database](http://evl.sourceforge.net/wiki/pmwiki.php/Docs/AzureusPlugin), [User driven storage/retrieval of objects](http://evl.sourceforge.net/wiki/pmwiki.php/Docs/Evlobj). 详细请见：[http://evl.sourceforge.net/whatis.html#whatis](http://evl.sourceforge.net/whatis.html#whatis)
+
+
+
+
+
+

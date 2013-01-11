@@ -1,0 +1,15 @@
+---
+comments: true
+date: 2009-10-31 09:41:00
+layout: post
+slug: '%e7%99%be%e5%ba%a6%e6%96%b0%e7%ae%97%e6%b3%95%e5%af%b9%e5%bf%ab%e6%8d%b7%e9%85%92%e5%ba%97%e9%a2%84%e8%ae%a2%e7%bd%91%e7%ab%99%e7%9a%84%e6%b5%81%e9%87%8f%e5%bd%b1%e5%93%8d%e5%88%86%e6%9e%90'
+title: 百度新算法对快捷酒店预订网站的流量影响分析
+wordpress_id: 1569887
+categories:
+- 未分类
+---
+
+而[快捷酒店预订网站](http://www.4006729400.com/)是屋漏偏逢连夜雨。先是UU商旅域名跟着[UUCall停服事件](http://blog.donews.com/itluck/archive/2009/10/12/1565584.aspx)给HOLD，紧急改用新的域名快捷酒店预订。刚开始在百度还未删除收录 时，用户搜索相应的锦江之星，如家快捷，七天连锁酒店，汉庭,格林豪泰，莫泰等关键字，虽然不能访问网站，但还能看到预订电话4006729400。但随着上周的百度新算法，先是把UU商旅所有收录全部删除了。接着与相关的[锦江之星](http://www.jinjianginnhotel.cn/)， [如家快捷酒店官网](http://www.homeexpresshotel.cn/)，[7天连锁酒店](http://www.7days-inns.cn/)，[汉庭](http://www.hantinginn.cn/)，[格林豪泰](http://www.greentree-inn.cn/)及[莫泰168](http://www.motel168inn.cn/)等流量站的相关关键字排名又给大大降低了。  
+  经营一个酒店预订网站，主要有两个要点，一是访问流量，二是流量转化率。  
+  访问流量对商旅电子商务是个小众市场，需要有的放矢的抓取流量。最好的流量就是来自于像去哪儿，酷讯这样的垂直搜索流量，另外就是来自于搜索引擎关于[锦江之星](http://www.4006729400.com/inn/jj-inn/)，[如家快捷](http://www.4006729400.com/inn/homeinns/)，[七天连锁酒店](http://www.4006729400.com/inn/7daysinn/)，[汉庭](http://www.4006729400.com/inn/htinns/),[格林豪泰](http://www.4006729400.com/inn/greentree/)，[莫泰168](http://www.4006729400.com/inn/motai168/)这样的关键字搜索转化了。  
+  流量转化率首先是要保证流量的有效性，再次保证客服质量来提高转化率.客服质量的保证首先靠客服的质量，再次靠呼叫中心工具的方便与否，快捷酒店预订网站采用了[云通400电话呼叫中心](http://www.51vcc.com/)

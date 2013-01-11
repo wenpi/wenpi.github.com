@@ -1,0 +1,12 @@
+---
+comments: true
+date: 2008-03-08 12:18:00
+layout: post
+slug: '%e6%90%ac%e5%ae%b6%e5%85%ac%e5%91%8a'
+title: 搬家公告
+wordpress_id: 1260156
+categories:
+- 未分类
+---
+
+看到DBANOTE给我链接到这儿来了,我的博客受搬家到[文痞--博客大巴](http://huwenshu.blogbus.com)

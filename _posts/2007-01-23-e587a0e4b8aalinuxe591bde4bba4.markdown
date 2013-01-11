@@ -1,0 +1,57 @@
+---
+comments: true
+date: 2007-01-23 17:52:00
+layout: post
+slug: '%e5%87%a0%e4%b8%aalinux%e5%91%bd%e4%bb%a4'
+title: 几个LINUX命令
+wordpress_id: 1118608
+categories:
+- 未分类
+---
+
+好久没弄LINUX了,很多命令都记不住,今天又遇上一台不能启动图片界面的服务器,只有一个个GOOGLE了
+
+
+
+
+netconfig或者setup更改IP地址
+
+
+
+
+shut -h now 关机不再启动
+
+
+
+
+startx/init5 启动图形界面
+
+
+
+
+vi/shift:wq 编辑
+
+
+
+
+tar 解压包
+
+
+
+
+ssh远程命令操作
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

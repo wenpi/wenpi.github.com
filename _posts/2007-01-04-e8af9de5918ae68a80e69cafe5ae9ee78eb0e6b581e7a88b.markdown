@@ -1,0 +1,14 @@
+---
+comments: true
+date: 2007-01-04 09:21:00
+layout: post
+slug: '%e8%af%9d%e5%91%8a%e6%8a%80%e6%9c%af%e5%ae%9e%e7%8e%b0%e6%b5%81%e7%a8%8b'
+title: 话告技术实现流程
+wordpress_id: 1107855
+categories:
+- 未分类
+---
+
+话告技术实现流程  
+1:IVR或VOIP系统留出HTTP接口供客户端写入被叫号码与商家号码,商家代码与号码对应的数据库存储在前端,供短信与IVR系统智能查找  
+2:制定标准的HTTP接口代码供网站话告业务使用

@@ -1,0 +1,12 @@
+---
+comments: true
+date: 2006-02-08 09:21:00
+layout: post
+slug: '%e4%bb%8a%e6%97%a5%e5%ad%a6%e4%b9%a0'
+title: 今日学习
+wordpress_id: 718666
+categories:
+- 未分类
+---
+
+前几天花了点安装了WORDPRESS使用一下,一直没搞清楚怎么做成像my.donews.com那样的发布网站,只能是一个人使用的博客觉得刚上班日常事务不多,所以上开源网站瞄瞄,今日又发现一个好的VOIP在MOBILE上应用的容器项目--Mobicents,其在开源地址： **[Mobicents](http://sourceforge.net/projects/mobicents/)**，在ＩＢＭ[**developerWorks**](http://www.ibm.com/developerworks/cn/)上也有简要说明,[**开源的 JAIN-SLEE SIP 软交换 -- Mobicents**](http://www-128.ibm.com/developerworks/cn/opensource/os-jain-slee/)

@@ -1,0 +1,15 @@
+---
+comments: true
+date: 2006-03-28 15:46:00
+layout: post
+slug: '%e6%88%91%e7%9a%84web2-0%e5%ae%b6%e6%97%8f'
+title: 我的WEB2.0家族
+wordpress_id: 796499
+categories:
+- 未分类
+---
+
+我的在[flickr](http://www.flickr.com/photos/69067576@N00/)开了图片共享系统 ,在[donews](http://blog.donews.com/itluck)开了博客,在[豆瓣](http://www.douban.com/people/1081653/)也开了小圈子,同时也在[MOP开了自己的小圈子](http://my.mop.com/itluck)  
+  
+这样我就在想,我算不算WEB2.0时尚人士了,同时我真正明白web2.0是什么了吗  
+

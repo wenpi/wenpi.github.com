@@ -1,0 +1,12 @@
+---
+comments: true
+date: 2006-07-12 12:43:00
+layout: post
+slug: '%e4%b8%96%e7%95%8c%e6%9d%af%e4%b8%8e%e6%88%91'
+title: 世界杯与我
+wordpress_id: 954773
+categories:
+- 未分类
+---
+
+None

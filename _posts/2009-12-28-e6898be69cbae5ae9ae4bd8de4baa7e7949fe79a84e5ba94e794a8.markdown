@@ -1,0 +1,229 @@
+---
+comments: true
+date: 2009-12-28 15:34:00
+layout: post
+slug: '%e6%89%8b%e6%9c%ba%e5%ae%9a%e4%bd%8d%e4%ba%a7%e7%94%9f%e7%9a%84%e5%ba%94%e7%94%a8'
+title: 手机定位产生的应用
+wordpress_id: 1578337
+categories:
+- 未分类
+---
+
+吃饭等菜空隙，同事给我5800安装了一个贝多的应用。一个基于手机定位的应用，包括位置交友，位置微博及位置社区的应用的。用用发现很有意思，我就对他最核心的技术，手机定位产生了兴趣。  
+手机定位可以基于手机基站，内置GPS,及登录的WIFI热点来确定位置。  
+关键字就在于  
+第一：要从手机上获取当前手机所在位置点，最准确的是GPS的经纬度。其次才是手机登录的基站cell id。  
+第二，要跟据获取的位置点，取到相应的经纬度来确定所在地图位置。  
+  
+基于内置GPS的手机定位实现很简单，通过GPS获取的参数调用google maps生成地图，完了在地图上完成应用。  
+基于基站的定位就相对较复杂，因为只能取得手机所在基站的MNC/LAC/Cell ID,要跟据MNC/LAC/Cell ID确定经纬度，是一个较复杂的问题，这个数据库只有运营商自己拥有，并且属于机密级数据。  
+但有一个很趣的例子，手机版的google maps能确定手机所在位置，那就是说google拥用基站数据库。下面针对google 手机地图做个详细的转载。  
+  
+如果你在你的手机装过Google Mobile Maps,你就可以发现只要你的手机能连接GPRS，即使没有GPS功能，也能定位到你手机所在的位置， 只是精度不够准确。在探讨这个原理之前，我们需要了解一些移动知识，了解什么是MNC/LAC/Cell ID。
+
+
+
+    
+  * Mobile Network Code(MNC)  
+移动网号码，中国联通CDMA系统的MNC为03，中国移动的为00。  
+
+
+    
+  * Mobile Country Code(MCC)  
+移动用户所属国家代号：460  
+
+
+    
+  * Location Area Code(LAC)  
+地区区域码，用来划分区域，一般一个小地方就一个LAC，大地方就  
+
+
+    
+  * Cell Tower ID(Cell ID)  
+CellID代表一个移动基站，如果你有基站数据，查CellID你就可以知道这个基站在哪里，移动公司或者警察通过这个知道你是在哪个基站范围打的移动电话。
+
+
+
+
+　 　这些信息有什么用呢？ 通过这些信息可以知道你的手机是从哪个国家，区域和哪个基站接入移动网络的。所以有些防盗手机丢失后，会发一些类 似"MCC:460;MNC:01;LAC:7198:CELLID:24989"内容的短信到你指定号码就是这个用途，通过这些信息可以从移动查到你的 被盗手机在哪里出现过。不过知道了也没用，中国人口这么密集，就是在你身边你也不知道谁是小偷：）   
+
+
+
+
+
+　　这些信息从哪里来呢，一般的手机系统都提供相应的API来获取这些信息（Tower Info），比如Window SmartPhone 或Mobile就是通过RIL.dll里的API来取得，每个手机操作系统不一样，相关的信息可以查相关资料。
+
+
+
+
+　 　得到了这些信息，如果没有基站信息表，得到了这些信息也不知道在哪，因为只有移动运营商有相关的信息，除非你是运营商或者警察才能得到这些信息。是 不是我们就查不到相应的数据呢，当然不是，强大的Google就有，这里就要提到Google Mobile Maps API，里面囊括了比较全的基站信息，中国的也有，就是偏远地区的有没有就不知道了。Google Mobile Maps本身就是使用的这些信息，感兴趣可以试一试，没有GPS模块也能定位到你手机位置，但精度不大，取决于基站的位置离你多远。   
+
+
+
+
+
+　　同样我们自己也可以开发相应的手机应用来定位，只要调用Google现成的API（Secret API）["http://www.google.com/glm/mmap](http://www.google.com/glm/mmap)".//当前好像已经不能再使用。
+
+
+
+
+
+
+* 首先读取你自己手机的CellID和LAC。
+
+
+* 通过Http连接发送Post请求到[http://www.google.com/glm/mmap](http://www.google.com/glm/mmap)。
+
+
+* 传入CellID和LAC参数，从API返回基站的经纬度（Latitude/Longitude）。
+
+
+
+另外有个可以参考的例子（windows mobile）[http://www.codeproject.com/KB/mobile/DeepCast.aspx   
+](http://www.codeproject.com/KB/mobile/DeepCast.aspx)
+
+
+
+
+　　下面是通过j2me获取手机imei号码和cellid（基站号）的例子
+
+
+
+
+　　
+
+
+
+
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)package jizhan;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)import javax.microedition.lcdui.Command;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)import javax.microedition.lcdui.CommandListener;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)import javax.microedition.lcdui.Display;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)import javax.microedition.lcdui.Displayable;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)import javax.microedition.lcdui.Form;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)import javax.microedition.midlet.MIDlet;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)import javax.microedition.midlet.MIDletStateChangeException;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/None.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedBlock.gif)public class GetIMEIAndCellId extends MIDlet implements CommandListener ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) private Command exitCommand = new Command("exit", Command.EXIT, 1);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) Form form = new Form("imei and cellid");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) Display display = null;  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) public GetIMEIAndCellId() ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) display = Display.getDisplay(this);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) protected void destroyApp(boolean arg0) ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) protected void pauseApp() ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) protected void startApp() throws MIDletStateChangeException ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //获取系统信息  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) String info = System.getProperty("microedition.platform");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //获取到imei号码  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) String imei = "";  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //cellid  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) String cellid = "";  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //lac  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) String lac = "";  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #if polish.vendor==Sony-Ericsson  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) imei = System.getProperty("com.sonyericsson.imei");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //参考 http://forums.sun.com/thread.jspa?threadID=5278668  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //https://developer.sonyericsson.com/message/110949  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) cellid = System.getProperty("com.sonyericsson.net.cellid");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //获取索爱机子的  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) lac = System.getProperty("com.sonyericsson.net.lac");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #else if polish.vendor==Nokia  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) imei = System.getProperty("phone.imei");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) if (imei == null || "".equals(imei)) ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) imei = System.getProperty("com.nokia.IMEI");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) if (imei == null || "".equals(imei)) ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) imei = System.getProperty("com.nokia.mid.imei");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //获取到cellid  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //参考http://wiki.forum.nokia.com/index.php/CS000947_-_Getting_Cell_ID_in_Java_ME  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #if polish.group==Series60  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) cellid = System.getProperty("com.nokia.mid.cellid");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #else if polish.group==Series40  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) cellid = System.getProperty("Cell-ID");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #endif  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #else if polish.vendor==Siemens  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) imei = System.getProperty("com.siemens.imei");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #else if polish.vendor==Motorola  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) imei = System.getProperty("com.motorola.IMEI");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //cellid 参考 http://web.mit.edu/21w.780/www/spring2007/guide/  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) cellid = System.getProperty("CellID");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #else if polish.vendor==Samsung  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) imei = System.getProperty("com.samsung.imei");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) // #endif  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) if (imei == null || "".equals(imei)) ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) imei = System.getProperty("IMEI");  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) //展示出来  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) form.append("platforminfo:" + info);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) form.append("imei:" + imei);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) form.append("cellid:" + cellid);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) form.setCommandListener(this);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) form.addCommand(exitCommand);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) display.setCurrent(form);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) public void commandAction(Command cmd, Displayable item) ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockStart.gif)![](http://www.cnblogs.com/Images/OutliningIndicators/ContractedSubBlock.gif) if (cmd == exitCommand) ![](http://www.cnblogs.com/Images/dot.gif){  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) destroyApp(false);  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif) notifyDestroyed();  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedSubBlockEnd.gif) }  
+![](http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif)  
+![](http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif)}
+
+
+
+
+
+
+
+
+
+
+　　需要注意的是，必须是受信任的Midlet才可以取到这些数据。也就是说Midlet必须经过签名上述代码才可以工作，否则获取到的是NULL。。   
+                        下面是从别的地方看来的，没做过测试，供参考。   
+                        a) Nokia = System.getProperty("com.nokia.mid.imei");   
+                        System.getProperty("com.nokia.IMEI");   
+                        System.getProperty("phone.imei");   
+                        b) Samsung   
+                        System.getProperty("com.samsung.imei");   
+                        c) Sony-Ericsson   
+                        System.getProperty("com.sonyericsson.imei");   
+                          
+　　IMSI: IMSI全称是International Mobile Subscriber Identification Number，移动用户身份码。当手机开机后，在接入网络的过程中有一个注册登记的过程，系统通过控制信道将经加密算法后的参数组传送给客户，手机中的 SIM卡收到参数后，与SIM卡存储的客户鉴权参数经同样算法后对比，结果相同就允许接入，否则为非法客户，网络拒绝为此客户服务。IMSI唯一的标志了 一个SIM卡。   
+　　IMEI: IMEI即International Mobile Equipment Identity（国际移动设备身份）的简称，也被称为串号，它唯一标志了一台移动设备，比如手机。 IMEI码一般由15位数字组成，绝大多数的GSM手机只要按下"＊#06#"，IMEI码就会显示出来。其格式如下： TAC即Type Approval Code，为设备型号核准号码。FAC即Final Assembly Code，为最后装配号码。 SNR即Serial Number，为出厂序号。 SP即Spare Number，为备用号码。　　
+
+
+
+
+　　有时候，我们在应用中需要获取IMSI或者IMEI号用于将应用程序和手机或SIM卡绑在一起。获取的方式在各不同厂商的各款手机上不尽相同，在motorola RAZR E6  上采用System.getProperty()获取。相应程序代码是： 
+
+
+String imei= System.getProperty("IMEI"); //for E6   
+                                                  if ( null == imei )   
+                                                  imei = System.getProperty("phone.IMEI");   
+                                                    
+                                                  String imsi = System.getProperty("IMSI"); //for E6   
+                                                  if ( null == imsi )   
+                                                  imei = System.getProperty("phone.IMSI");   
+                                                    
+g.drawString("IMEI: "+imei, 10, 50, Graphics.LEFT | Graphics.TOP);   
+
+
+
+g.drawString("IMSI: "+imsi, 10, 70, Graphics.LEFT | Graphics.TOP); 

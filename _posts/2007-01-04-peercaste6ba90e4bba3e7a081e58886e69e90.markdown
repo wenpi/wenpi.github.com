@@ -1,0 +1,83 @@
+---
+comments: true
+date: 2007-01-04 15:40:00
+layout: post
+slug: peercast%e6%ba%90%e4%bb%a3%e7%a0%81%e5%88%86%e6%9e%90
+title: Peercast源代码分析
+wordpress_id: 1108090
+categories:
+- 未分类
+---
+
+Peercast分为两个目录：  
+core目录主要完成核心的操作  
+ui目录实现界面
+
+
+
+
+其中ui下面又可分为html目录和win32目录  
+html目录主要是一些网页，用来完成Peercast的相关配置，其中en为英文版本。  
+以下就en下的一些文件做一些介绍：
+
+
+
+
+win32目录下的文件：  
+Simple.cpp 负责窗口界面的生成及一些相关启动管理  
+gui.cpp 完成peercast主窗口（GUI）的一些操作
+
+
+
+
+core目录:  
+common目录:主要完成通用的核心代码（主要代码均在此目录下）  
+unix目录:与UNIX相关的一些类  
+win32目录:与win32相关的一些类  
+Wsys.cpp：继承自Sys，提供基本的win32功能例如开启线程  
+Wsocket.cpp:ClientSocket的WINDOWS版本.处理实际的读写TCP操作
+
+
+
+
+  
+下面着重介绍一下common目录，这是整个peercast的核心
+
+
+
+
+Common.h 定义了一些异常处理类和GnuID、GnuIdList和Host类  
+Channel.cpp: 频道流类。它们进行客户之间的实际媒体流传输  
+Gnutella.cpp: GnuPacket是一个Guntella协议,GnuStream是一个流，用来读取/写入GunPackets  
+Html.cpp: Html协议的一些处理  
+Http.cpp: Http协议的一些处理  
+Icy.cpp:  
+IniFile.cpp 配置信息的读取和修改  
+Jis\mms\mp3\nsv\ogg：处理不同的流格式，包括读取HEADER信息等  
+Pcp.cpp:Peercast的网络协议  
+Peercast.cpp: 整个Peercast流程的管理，包括启动频道管理器、服务管理器，关闭，登录日志等,设置服务器密码等  
+RTSP.cpp：只是个实验，并没有实际的东西  
+Servent.cpp:是客户端之间真正的连接。他们处理handShaking，数据转输和GnuPackets的处理。每个servent在连接时有一个socket分配
+
+
+
+
+给它，它用这个socket来传输所有的数据  
+Servhs.cpp:处理一些HANDSHAKE相关的东西  
+ServMgr.cpp: 处理服务器信息的读取和修改。一个管理类，用来处理多样的severnt连接  
+Socket.cpp : ClientSocket是一个通用的socket接口，与OS/HW无关  
+Stat.cpp: 相关数据的统计  
+Stream.cpp: 一些流文件的读取和写入处理  
+Sys.cpp：一个对所有系统的基础类，例如开启线程，创建socket  
+url.cpp: 关于URL的一些处理操作  
+XML.cpp：进行电台信息的一些XML存取操作
+
+
+
+
+[http://blog.csdn.net/cc1983/](http://blog.csdn.net/cc1983/)  
+[http://bbs.lmtw.com/index.asp](http://bbs.lmtw.com/index.asp)  
+[http://www.chinaavs.com/bbs/index.php](http://www.chinaavs.com/bbs/index.php)  
+[http://blog.csdn.net/bbisonic/](http://blog.csdn.net/bbisonic/)  
+[http://movie.jndaily.com/](http://movie.jndaily.com/)  
+[http://blog.lmtw.com/b/guanyhu/index.html](http://blog.lmtw.com/b/guanyhu/index.html)

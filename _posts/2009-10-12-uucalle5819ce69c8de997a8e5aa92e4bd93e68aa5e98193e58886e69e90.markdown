@@ -1,0 +1,17 @@
+---
+comments: true
+date: 2009-10-12 23:30:00
+layout: post
+slug: uucall%e5%81%9c%e6%9c%8d%e9%97%a8%e5%aa%92%e4%bd%93%e6%8a%a5%e9%81%93%e5%88%86%e6%9e%90
+title: UUCall停服门媒体报道分析
+wordpress_id: 1565632
+categories:
+- 未分类
+---
+
+自从UUCall怎么了与UUCall倒闭成为网络热门词以后，触觉灵敏的媒体闻风而动，先是有济南时报没有任何采访的情况下发布了****[**UUCal网络电话停服 3000万用户预存话费咋退**](http://www.cnbeta.com/articles/95202.htm)****，接着腾讯科技在采访后发布了[****UUcall负责人首次解释停服:我们不会圈钱跑路****](http://huwenshu.blogbus.com/logs/48191604.html)，并且配了原来UUCall主页的图片。新浪也紧跟进发布了一篇更厉害的**[**UUCall创始人回应停服:卖血都会把钱还给用户**](http://tech.sina.com.cn/i/2009-10-12/12153498809.shtml)**。最后IT媒体较牛逼的sohu在最后采访也发布一篇**[**UUCall负责人:若开服无望会返还用户话费**](http://it.sohu.com/20091012/n267300045.shtml)**，其中杭州市本地媒体今日早报用一整版的篇幅报道了UUCall停服事情，还叫有记者到UUCall杭州总部拍了照片，现场采访了人，发表了**[**网络电话瘫痪预付话费咋办? "UU Call"用户讨说法**](http://blog.donews.com/itluck/archive/2009/10/12/1565584.aspx)  
+  
+**同时这几篇原创报道受到了人民网，新华网，新民网等传统官方一些媒体的大量转载。更加深一步的推动了UUCall吧的热火及UUCall关键字的百度指数窜升。并且UUCall的媒体关注度也由0直接窜升为48。  
+  
+而等了这么久，整个UUCall.com仍然是被hold的，其中只发现一个提供[如家快捷酒店](http://www.homeexpresshotel.cn/)，[锦星之星酒店](http://www.jinjianginnhotel.cn/)及[7天连锁酒店](http://www.7days-inns.cn/)等[快捷酒店预订的UU商旅](http://www.4006729400.com/)已更换域名开始恢复服务了。而最主要的UUCall即时工具也只恢复UUCall打UUCall 的功能，而最重要被协助调查的打电话功能一直没恢复计划表。  
+**[](http://www.cnbeta.com/articles/95202.htm)**

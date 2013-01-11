@@ -1,0 +1,12 @@
+---
+comments: true
+date: 2009-10-08 08:06:00
+layout: post
+slug: uu%e5%95%86%e6%97%85%e4%b9%8b%e5%9f%9f%e5%90%8d%e6%8c%87%e5%90%91%e6%9b%b4%e6%8d%a2
+title: UU商旅之域名指向更换
+wordpress_id: 1564862
+categories:
+- 未分类
+---
+
+[UU商旅](http://www.4006729400.com)因原域名被HOLD，原来的[http://trip.uucall.com](http://trip.uucall.com)暂时不能访问，现已全部改指向域名[http://www.4006729400.com](http://www.4006729400.com),这其中有很多麻烦的原因，先不一一说,预订电话4006729400仍然不变
